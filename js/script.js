@@ -110,7 +110,9 @@ function timeOut() {
 }
 
 $('#timeout').click(function() {
-  toggleTimeout();
+  if(timeout_visible) {
+    toggleTimeout();    
+  }
 });
 
 
@@ -118,15 +120,17 @@ function toggleTimeout() {
   if(timeout_visible) {
     $('#timeout').animate({
       top: "-25%",
-    },300);
-    timeout_visible = false;
-    return;
+    },300, function() {
+      timeout_visible = false;
+      return;
+    });
   }
   else {
     $('#timeout').animate({
       top: "45%",
-    }, 500);
-    timeout_visible = true;
+    }, 500,function() {
+      timeout_visible = true;
+    });
   }
 }
 
