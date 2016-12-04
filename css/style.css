@@ -176,3 +176,18 @@ footer.page-footer {
    .input-field .prefix.active {
      color: #FFF;
    }  
+
+
+
+@media screen and (max-width: 1280px) {
+  #timeout {
+    font-size: 6rem;
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #timeout {
+    font-size: 4rem;
+  }
+}
