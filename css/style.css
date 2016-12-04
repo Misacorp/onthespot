@@ -64,6 +64,7 @@ footer {
   margin: auto;
   font-size: 10em;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .med-circle {
@@ -97,10 +98,12 @@ footer {
 
 .blue-bg {
   background-color: #5599DD;
+  transition: background-color 0.3s;
 }
 
 .brown-bg {
   background-color: #EE5A5A;
+  transition: background-color 0.3s;
   /*background-color: #886644;*/
 }
 
@@ -128,6 +131,29 @@ footer.page-footer {
   color: #442010;
 }
 
+#timeout {
+  z-index: 10;
+  position: absolute;
+  top: -25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  background-color: red;
+  padding: 100px;
+  border-radius: 75px;
+  color: #FFE0C0;
+  background-color: #442010;
+  font-size: 9rem;
+  transition: top 1s;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  overflow: hidden;
+}
+
+#timeout:hover {
+  background-color: #553020;
+  transition: background-color 0.3s;
+}
 
 
 
