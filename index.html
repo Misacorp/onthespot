@@ -15,51 +15,73 @@
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 	<link rel="stylesheet" href="css/materialize.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-<main>
-	<div class="container">
-		<div class="row">
-			<div class="col s12 main-content">
-				Content here
+<header>
+	<!-- SCORE LEFT -->
+	<div class="score-container left-edge valign">
+		<div class="med-circle blue-bg z-depth-1">
+			<div id="score-left" class="center number">
+				5
 			</div>
 		</div>
 	</div>
-	<div class="clock-container valign-wrapper">
-		<div class="big-circle valign">
+
+	<!-- CLOCK -->
+	<div class="clock-container center valign-wrapper">
+		<div class="big-circle valign z-depth-1">
 			<div class="timer center">
 				<div id="timer-value" class="number">57</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- SCORE AREA -->
-	<div class="score-area valign-wrapper">
-
-		<div class="score-container valign">
-			<div class="med-circle score-left">
-				<div id="score-left" class="center number">
-					5
-				</div>
+	<!-- SCORE RIGHT -->
+	<div class="score-container right-edge valign">
+		<div class="med-circle brown-bg z-depth-1">
+			<div id="score-left" class="center number">
+				3
 			</div>
 		</div>
-
-		<div class="score-divider valign center number">
-		</div>
-
-		<div class="score-container valign">
-			<div class="med-circle score-right">
-				<div id="score-right" class="center number">
-					3
-				</div>
-			</div>
-		</div>
-
 	</div>
+</header>
+
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col s12 main-content">
+				
+				<div class="card-panel center">
+					Ä:llä alkavien eläinten ilmeily.
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
 </main>
+
+<footer class="page-footer">
+	<div class="container">
+		<div class="row">
+
+			<!-- Syöttökenttä -->
+			<div class="col s12 valign-wrapper">
+	      <i class="material-icons">mode_edit</i>
+				<div class="input-field col s12 white-text valign">
+	        <input id="kirjoitus" type="text">
+	      </div>
+	      <a class="btn-floating btn-large waves-effect waves-light body-button"><i class="material-icons">send</i></a>
+      </div>
+
+		</div>
+	</div>
+</footer>
+
 </body>
 
 </html>

@@ -1,29 +1,51 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,800,900');
-
 html {
   color: black;
+  background-color: #D0B080;
+  font-family: 'Fredoka One', cursive;
+}
+
+header {
+  background-color: #FFD0A0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  font-size: 5em;
+  margin-top:20px;
+  flex: 1 0 auto;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  color: white;
+  background-color: #B09060 !important;
 }
 
 .clock-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 300px;
-  height: 300px;
-}
-
-.score-area {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  width: 420px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 }
 
 .score-container {
-  margin: 0;
-  width: 50%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 20px;
+}
+
+.left-edge {
+  left: 20px;
+}
+
+.right-edge {
+  right: 20px;
 }
 
 .score-divider {
@@ -34,12 +56,13 @@ html {
 }
 
 .big-circle {
+  z-index: 1;
   width: 90%;
   height: 90%;
   background-color: #11BB55;
   border-radius: 50%;
   margin: auto;
-  font-size: 12em;
+  font-size: 10em;
 }
 
 .med-circle {
@@ -57,14 +80,61 @@ html {
 }
 
 .number {
-  font-family: 'Fredoka One', cursive;
   color: #FFF;
 }
 
-.score-left {
-  background-color: #6677FF;
+.blue-bg {
+  background-color: #5599DD;
 }
 
-.score-right {
-  background-color: #886644;
+.brown-bg {
+  background-color: #EE5A5A;
+  /*background-color: #886644;*/
 }
+
+input {
+  border-color: white !important;
+  font-family: Roboto, sans;
+  font-weight: 400;
+  font-size: 1em !important;
+}
+
+.body-button {
+  background-color: #D0B080;
+}
+
+.body-button:hover {
+  background-color: #D7B787;
+}
+
+footer.page-footer {
+  padding-top: 10px !important;
+}
+
+.card-panel {
+  background-color: #FFE0C0 !important;
+  color: #442010;
+}
+
+
+
+
+
+
+/* label color */
+   .input-field label {
+     color: #FFF;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #FFF;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #FFF;
+     box-shadow: 0 1px 0 0 #FFF;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #FFF;
+   }  
