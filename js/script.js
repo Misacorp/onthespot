@@ -167,3 +167,41 @@ $('#timer-value').hover(function() {
 function changeColor(object, color) {
   $(object).css("background-color", color);
 }
+
+
+
+
+
+
+var content_number = 1;
+
+$(document).keydown(function(e) {
+  console.log("Key " + e.which + " pressed.");
+  
+  if(e.which == 37) {
+    prevContent();
+  }
+
+  if(e.which == 39) {
+    nextContent();
+  }
+
+});
+
+$('#button-right').click(function() {
+  nextContent();
+});
+
+$('#button-left').click(function() {
+  prevContent();
+});
+
+function prevContent() {
+  content_number--;
+  $('#content_1').html(content_number);
+}
+
+function nextContent() {
+  content_number++;
+  $('#content_1').html(content_number);
+}

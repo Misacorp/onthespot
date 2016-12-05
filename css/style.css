@@ -24,8 +24,12 @@ footer {
   position: relative;
   bottom: 0;
   left: 0;
-  color: white;
   background-color: #B09060 !important;
+  color: #FFE0C0 !important;
+}
+
+footer a i {
+  color: #FFE0C0 !important;
 }
 
 .clock-container {
@@ -108,7 +112,7 @@ footer {
 }
 
 input {
-  border-color: white !important;
+  border-color: #FFE0C0 !important;
   font-family: Roboto, sans;
   font-weight: 400;
   font-size: 1em !important;
@@ -155,26 +159,56 @@ footer.page-footer {
   transition: background-color 0.3s;
 }
 
+.navigation-button {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+}
+
+.navigation-button a {
+  background-color: #FFD0A0;
+}
+
+.navigation-button a:hover {
+  background-color: #FFD7A7;
+}
+
+.navigation-button a i {
+  color: #B09060;
+}
+
+#button-left {
+  left: 20px;
+}
+
+#button-right {
+  right: 20px;
+}
+
+.btn-large {
+  line-height: 27px;
+}
+
 
 
 
 
 /* label color */
    .input-field label {
-     color: #FFF;
+     color: #FFE0C0;
    }
    /* label focus color */
    .input-field input[type=text]:focus + label {
-     color: #FFF;
+     color: #FFE0C0;
    }
    /* label underline focus color */
    .input-field input[type=text]:focus {
-     border-bottom: 1px solid #FFF;
-     box-shadow: 0 1px 0 0 #FFF;
+     border-bottom: 1px solid #FFE0C0;
+     box-shadow: 0 1px 0 0 #FFE0C0;
    }
    /* icon prefix focus color */
    .input-field .prefix.active {
-     color: #FFF;
+     color: #FFE0C0;
    }  
 
 
