@@ -18,6 +18,8 @@ main {
   font-size: 5em;
   margin-top:20px;
   flex: 1 0 auto;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 footer {
@@ -133,6 +135,8 @@ footer.page-footer {
 .card-panel {
   background-color: #FFE0C0 !important;
   color: #442010;
+  min-width: 70%;
+  position: relative;
 }
 
 #timeout {
@@ -189,6 +193,9 @@ footer.page-footer {
   line-height: 27px;
 }
 
+#content_2 {
+  left: 150%;
+}
 
 
 

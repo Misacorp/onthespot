@@ -1,4 +1,4 @@
-document.addEventListener('contextmenu', event => event.preventDefault());
+// document.addEventListener('contextmenu', event => event.preventDefault());
 
 $(document).ready(function() {
   console.log("Document ready");
@@ -8,6 +8,7 @@ $(document).ready(function() {
 var score_left = 0;
 var score_right = 0;
 var timeout_visible = false;
+var first_content = true;
 
 $('#score-left').click(function() {
   score_left++;
@@ -198,10 +199,47 @@ $('#button-left').click(function() {
 
 function prevContent() {
   content_number--;
-  $('#content_1').html(content_number);
 }
 
 function nextContent() {
   content_number++;
-  $('#content_1').html(content_number);
+
+  if(first_content) {
+    //  Move content 1 container out of screen to the left.
+    $('#content_1').animate({
+      "left": "-150%",
+    },1000, function() {
+      $('#content_1').css({
+        "left": "150%",
+      });
+    });
+
+    //  Update content 2 container value.
+    $('#content_2').html(content_number);
+  
+    //  Move content 2 container into middle of screen.
+    $('#content_2').animate({
+      "left": "0",
+    },1000);
+    first_content = !first_content;
+  }
+  else {
+    //  Move content 2 container out of screen to the left.
+    $('#content_2').animate({
+      "left": "-150%",
+    },1000, function() {
+      $('#content_2').css({
+        "left": "150%",
+      })
+    });
+
+    //  Update content 1 container value.
+    $('#content_1').html(content_number);
+  
+    //  Move content 1 container into middle of screen.
+    $('#content_1').animate({
+      "left": "0",
+    },1000);
+    first_content = !first_content;
+  }
 }
