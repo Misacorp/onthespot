@@ -1,11 +1,12 @@
 // BEGIN CONTENT
+//  This sets the stage for the show. Would be nice to have a UI that helps build it on the page itself, right?
 
 var content = [
   "Jarkan hieno kilpailu",
   "1. Uusi supersankari",
   "<img class=\"valign center responsive-img\" src=\"img/superhero1.jpg\">",
   "<img class=\"valign center responsive-img\" src=\"img/superhero2.jpg\">",
-  "2. Yhdessä paremmin, sana kerrallaan",
+  "2. Yhdessä paremmin",
   "Kuinka tehdä hyvä joulu?",
   "Vastaus 1",
   "Miten saa seurustelukumppanin?",
@@ -18,7 +19,7 @@ var content = [
 
 // END CONTENT
 
-// document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('contextmenu', event => event.preventDefault());
 
 var score_left = 0;
 var score_right = 0;
@@ -28,10 +29,16 @@ var first_content = true;
 var CONTENT_ANIM_SPEED = 500;
 var anim_complete = true;
 
+// TIMER
+var sTime;
+var countDown = 60;     //  Countdown timer start value
+var counter;
+
 $(document).ready(function() {
   console.log("Document ready");
   $('#timer-value').html(countDown);
-  $('#content_1').html(content[content_number])
+  $('#content_1').html(content[content_number]);
+  $('#button-left').hide();
 });
 
 $('#score-left').click(function() {
@@ -63,10 +70,6 @@ function updateScores() {
 
 
 
-// TIMER
-var sTime;
-var countDown = 2;     //  Countdown timer start value
-var counter;
 
 function UpdateTime() {
     var cTime = new Date().getTime();
@@ -136,7 +139,8 @@ function timeOut() {
 
 $('#timeout').click(function() {
   if(timeout_visible) {
-    toggleTimeout();    
+    toggleTimeout();
+    resetTimer(); 
   }
 });
 
@@ -198,16 +202,29 @@ function changeColor(object, color) {
 
 
 
-
+//  Keyboard commands.
 $(document).keydown(function(e) {
   console.log("Key " + e.which + " pressed.");
   
+  //  Left and right keys scroll content.
   if(e.which == 37) {
     prevContent();
   }
-
   if(e.which == 39) {
     nextContent();
+  }
+
+  //  Enter key updates answer.
+  if(e.which == 13) {
+    updateAnswer();
+  }
+
+  //  Up arrow moves timeout notification away.
+  if(e.which == 38) {
+    if(timeout_visible) {
+      toggleTimeout();
+      resetTimer();
+    }
   }
 
 });
@@ -221,6 +238,14 @@ $('#button-left').click(function() {
 });
 
 function prevContent() {
+  //  If scrolling to first page, hide back button.
+  if(content_number == 1) {
+    $('#button-left').hide();
+  }
+
+  //  Make sure forward button is showing.
+  $('#button-right').show();
+
   if(anim_complete) {
     if(content_number > 0) {
       content_number--;
@@ -314,6 +339,14 @@ function prevContent() {
 
 
 function nextContent() {
+  //  If scrolling to first page, hide back button.
+  if(content_number == content.length-2) {
+    $('#button-right').hide();
+  }
+
+  //  Make sure forward button is showing.
+  $('#button-left').show();
+
   if(anim_complete) {
     if(content_number < content.length-1) {
       content_number++;
@@ -416,5 +449,19 @@ function nextContent() {
         });
       }
     }
+  }
+}
+
+$('#send').click(function() {
+  updateAnswer();
+});
+
+function updateAnswer() {
+  //  Update answers to questions. This is hard coded to the array values so change these if you add or remove content items.
+  if(content_number == 5 || content_number == 6) {
+    content[6] = "<span class=\"blue-text\">" + $('#kirjoitus').val() + "</span>";
+  }
+  if(content_number == 7 || content_number == 8) {
+    content[8] = "<span class=\"red-text\">" + $('#kirjoitus').val() + "</span>";
   }
 }
