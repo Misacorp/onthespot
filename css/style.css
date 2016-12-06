@@ -139,6 +139,14 @@ footer.page-footer {
   position: relative;
 }
 
+.card-panel img {
+  max-height: 300px;
+}
+
+#content_2 {
+  transform: translateY(-50%);
+}
+
 #timeout {
   z-index: 10;
   position: absolute;

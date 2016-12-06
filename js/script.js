@@ -1,16 +1,29 @@
-// document.addEventListener('contextmenu', event => event.preventDefault());
+// BEGIN CONTENT
 
-$(document).ready(function() {
-  console.log("Document ready");
-  $('#timer-value').html(countDown);
-});
+var content = [
+  "Jarkan hieno kilpailu",
+  "Kuinka tehdä hyvä joulu?",
+  "Miten saa seurustelukumppanin?",
+];
+
+
+// END CONTENT
+
+document.addEventListener('contextmenu', event => event.preventDefault());
 
 var score_left = 0;
 var score_right = 0;
 var timeout_visible = false;
+var content_number = 0;
 var first_content = true;
 var CONTENT_ANIM_SPEED = 500;
 var anim_complete = true;
+
+$(document).ready(function() {
+  console.log("Document ready");
+  $('#timer-value').html(countDown);
+  $('#content_1').html(content[content_number])
+});
 
 $('#score-left').click(function() {
   score_left++;
@@ -176,7 +189,6 @@ function changeColor(object, color) {
 
 
 
-var content_number = 1;
 
 $(document).keydown(function(e) {
   console.log("Key " + e.which + " pressed.");
@@ -201,76 +213,90 @@ $('#button-left').click(function() {
 
 function prevContent() {
   if(anim_complete) {
-    content_number--;
-    //  If first content is visible
-    if(first_content) {
-      //  Disable animation stacking for duration of animation.
-      anim_complete = false;
-      //  Move content 1 container out of screen to the right.
-      $('#content_1').animate({
-        "left": "150%",
-      },CONTENT_ANIM_SPEED, function() {
-        //  Re-enable animations.
-        anim_complete = true;
+    if(content_number > 0) {
+      content_number--;
+      //  If first content is visible
+      if(first_content) {
+        //  Disable animation stacking for duration of animation.
+        anim_complete = false;
+        //  Move content 1 container out of screen to the right.
+        $('#content_1').animate({
+          "left": "150%",
+        },CONTENT_ANIM_SPEED, function() {
+          //  Re-enable animations.
+          anim_complete = true;
+          $('#content_1').css({
+            "left": "-150%",
+          });
+        });
+
+        //  Update content 2 container value.
+        $('#content_2').html(content[content_number]);
+
+        //  Move second content to the left so it slides in from the correct side.
+        $('#content_2').css({
+          "left": "-150%",
+        });
+      
+        //  Disable animation stacking for duration of animation.
+        anim_complete = false;
+
+        //  Move content 2 container into middle of screen.
+        $('#content_2').animate({
+          "left": "0",
+        },CONTENT_ANIM_SPEED,function() {
+          //  Re-enable animations.
+          anim_complete = true;
+        });
+        first_content = !first_content;
+      }
+      else {
+        //  Disable animation stacking for duration of animation.
+        anim_complete = false;
+
+        //  Move content 2 container out of screen to the right.
+        $('#content_2').animate({
+          "left": "150%",
+        },CONTENT_ANIM_SPEED, function() {
+          //  Re-enable animations
+          anim_complete = true;
+          $('#content_2').css({
+            "left": "-150%",
+          })
+        });
+
+        //  Update content 1 container value.
+        $('#content_1').html(content[content_number]);
+
+        //  Move content 1 to the left so it slides in from the right side.
         $('#content_1').css({
           "left": "-150%",
         });
-      });
 
-      //  Update content 2 container value.
-      $('#content_2').html(content_number);
-
-      //  Move second content to the left so it slides in from the correct side.
-      $('#content_2').css({
-        "left": "-150%",
-      });
-    
-      //  Disable animation stacking for duration of animation.
-      anim_complete = false;
-
-      //  Move content 2 container into middle of screen.
-      $('#content_2').animate({
-        "left": "0",
-      },CONTENT_ANIM_SPEED,function() {
-        //  Re-enable animations.
-        anim_complete = true;
-      });
-      first_content = !first_content;
+        //  Disable animation stacking for duration of animation.
+        anim_complete = false;
+      
+        //  Move content 1 container into middle of screen.
+        $('#content_1').animate({
+          "left": "0",
+        },CONTENT_ANIM_SPEED,function() {
+          //  Re-enable animations.
+          anim_complete = true;
+        });
+        first_content = !first_content;
+      }
     }
     else {
-      //  Disable animation stacking for duration of animation.
       anim_complete = false;
-
-      //  Move content 2 container out of screen to the right.
-      $('#content_2').animate({
-        "left": "150%",
-      },CONTENT_ANIM_SPEED, function() {
-        //  Re-enable animations
-        anim_complete = true;
-        $('#content_2').css({
-          "left": "-150%",
-        })
-      });
-
-      //  Update content 1 container value.
-      $('#content_1').html(content_number);
-
-      //  Move content 1 to the left so it slides in from the right side.
-      $('#content_1').css({
-        "left": "-150%",
-      });
-
-      //  Disable animation stacking for duration of animation.
-      anim_complete = false;
-    
-      //  Move content 1 container into middle of screen.
       $('#content_1').animate({
-        "left": "0",
-      },CONTENT_ANIM_SPEED,function() {
-        //  Re-enable animations.
-        anim_complete = true;
+        "left": "15%",
+      },CONTENT_ANIM_SPEED/2,function() {
+        $('#content_1').animate({
+          "left": "0",
+        },CONTENT_ANIM_SPEED/2,function() {
+          anim_complete = true;
+        });
       });
-      first_content = !first_content;
     }
   }
 }
@@ -280,77 +306,92 @@ function prevContent() {
 
 function nextContent() {
   if(anim_complete) {
-    content_number++;
+    if(content_number < content.length-1) {
+      content_number++;
 
-    if(first_content) {
-      //  Disable animation stacking for duration of animation.
-      anim_complete = false;
+      if(first_content) {
+        //  Disable animation stacking for duration of animation.
+        anim_complete = false;
 
-      //  Move content 1 container out of screen to the left.
-      $('#content_1').animate({
-        "left": "-150%",
-      },CONTENT_ANIM_SPEED, function() {
-        //  Re-enable animations.
-        anim_complete = true;
+        //  Move content 1 container out of screen to the left.
+        $('#content_1').animate({
+          "left": "-150%",
+        },CONTENT_ANIM_SPEED, function() {
+          //  Re-enable animations.
+          anim_complete = true;
+          $('#content_1').css({
+            "left": "150%",
+          });
+        });
+
+        //  Update content 2 container value.
+        $('#content_2').html(content[content_number]);
+
+        //  Move content 2 to the right so it slides in from the correct side.
+        $('#content_2').css({
+          "left": "150%",
+        });
+
+        //  Disable animation stacking for duration of animation.
+        anim_complete = false;
+
+        //  Move content 2 container into middle of screen.
+        $('#content_2').animate({
+          "left": "0",
+        },CONTENT_ANIM_SPEED,function() {
+          //  Re-enable animations
+          anim_complete = true;
+        });
+        first_content = !first_content;
+      }
+      else {
+        //  Disable animation stacking for duration of animation.
+        anim_complete = false;
+
+        //  Move content 2 container out of screen to the left.
+        $('#content_2').animate({
+          "left": "-150%",
+        },CONTENT_ANIM_SPEED, function() {
+          //  Re-enable animations.
+          anim_complete = true;
+          $('#content_2').css({
+            "left": "150%",
+          })
+        });
+
+        //  Update content 1 container value.
+        $('#content_1').html(content[content_number]);
+
+        //  Move content 1 to the right so it slides in from the correct side.
         $('#content_1').css({
           "left": "150%",
         });
-      });
 
-      //  Update content 2 container value.
-      $('#content_2').html(content_number);
+        //  Disable animation stacking for duration of animation.
+        anim_complete = false;
 
-      //  Move content 2 to the right so it slides in from the correct side.
-      $('#content_2').css({
-        "left": "150%",
-      });
-
-      //  Disable animation stacking for duration of animation.
-      anim_complete = false;
-
-      //  Move content 2 container into middle of screen.
-      $('#content_2').animate({
-        "left": "0",
-      },CONTENT_ANIM_SPEED,function() {
-        //  Re-enable animations
-        anim_complete = true;
-      });
-      first_content = !first_content;
+        //  Move content 1 container into middle of screen.
+        $('#content_1').animate({
+          "left": "0",
+        },CONTENT_ANIM_SPEED,function() {
+          //  Re-enable animations.
+          anim_complete = true;
+        });
+        first_content = !first_content;
+      }
     }
+
     else {
-      //  Disable animation stacking for duration of animation.
       anim_complete = false;
-
-      //  Move content 2 container out of screen to the left.
-      $('#content_2').animate({
-        "left": "-150%",
-      },CONTENT_ANIM_SPEED, function() {
-        //  Re-enable animations.
-        anim_complete = true;
-        $('#content_2').css({
-          "left": "150%",
-        })
-      });
-
-      //  Update content 1 container value.
-      $('#content_1').html(content_number);
-
-      //  Move content 1 to the right so it slides in from the correct side.
-      $('#content_1').css({
-        "left": "150%",
-      });
-
-      //  Disable animation stacking for duration of animation.
-      anim_complete = false;
-
-      //  Move content 1 container into middle of screen.
       $('#content_1').animate({
-        "left": "0",
-      },CONTENT_ANIM_SPEED,function() {
-        //  Re-enable animations.
-        anim_complete = true;
+        "left": "-15%",
+      },CONTENT_ANIM_SPEED/2,function() {
+        $('#content_1').animate({
+          "left": "0",
+        },CONTENT_ANIM_SPEED/2,function() {
+          anim_complete = true;
+        });
       });
-      first_content = !first_content;
     }
   }
 }
