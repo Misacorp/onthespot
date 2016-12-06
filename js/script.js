@@ -3,11 +3,16 @@
 var content = [
   "Jarkan hieno kilpailu",
   "1. Uusi supersankari",
-  "<img class=\"valign center\" src=\"img/superhero1.jpg\">",
-  "<img class=\"valign center\" src=\"img/superhero2.jpg\">",
+  "<img class=\"valign center responsive-img\" src=\"img/superhero1.jpg\">",
+  "<img class=\"valign center responsive-img\" src=\"img/superhero2.jpg\">",
   "2. Yhdessä paremmin, sana kerrallaan",
   "Kuinka tehdä hyvä joulu?",
+  "Vastaus 1",
   "Miten saa seurustelukumppanin?",
+  "Vastaus 2",
+  "3. Aakkosnäytelmä",
+  "<span class=\"blue-text\">Henkilö 1</span> on Jehovan todistaja, joka yrittää ängetä ovesta sisään kertomaan jumalastaan. <span class=\"purple-text\">Henkilö 2</span> on juuri murhannut ihmisen, eikä halua sen paljastuvan.",
+  "<span class=\"red-text\">Henkilö 1</span> on turisti, joka luulee tulleensa matkamuistokauppaan. <span class=\"orange-text text-darken-2\">Henkilö 2</span> on rukouspalvelija, joka alkaa profetoida <span class=\"red-text\">Henkilön 1</span> elämästä."
 ];
 
 
@@ -386,16 +391,30 @@ function nextContent() {
     }
 
     else {
-      anim_complete = false;
-      $('#content_1').animate({
-        "left": "5%",
-      },CONTENT_ANIM_SPEED/4,function() {
+      if(first_content) {
+        anim_complete = false;
         $('#content_1').animate({
-          "left": "15%",
+          "left": "5%",
         },CONTENT_ANIM_SPEED/4,function() {
-          anim_complete = true;
+          $('#content_1').animate({
+            "left": "15%",
+          },CONTENT_ANIM_SPEED/4,function() {
+            anim_complete = true;
+          });
         });
-      });
+      }
+      else {
+        anim_complete = false;
+        $('#content_2').animate({
+          "left": "5%",
+        },CONTENT_ANIM_SPEED/4,function() {
+          $('#content_2').animate({
+            "left": "15%",
+          },CONTENT_ANIM_SPEED/4,function() {
+            anim_complete = true;
+          });
+        });
+      }
     }
   }
 }

@@ -142,17 +142,12 @@ footer.page-footer {
   left: 15%;
   top: 255px;
   display: inline;
+  max-height: calc(100vh - 260px - 126px);
 }
 
 .card-panel img {
-  max-height: 58vh;
-  height: 58vh;
-  line-height: 58vh;
+  max-height: calc(100vh - 260px - 166px);
 }
-/*
-#content_2 {
-  transform: translateY(-50%);
-}*/
 
 #timeout {
   z-index: 10;
@@ -211,8 +206,6 @@ footer.page-footer {
 #content_2 {
   left: 150%;
 }
-
-
 
 
 /* label color */
