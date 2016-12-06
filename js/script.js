@@ -2,6 +2,10 @@
 
 var content = [
   "Jarkan hieno kilpailu",
+  "1. Uusi supersankari",
+  "<img class=\"valign center\" src=\"img/superhero1.jpg\">",
+  "<img class=\"valign center\" src=\"img/superhero2.jpg\">",
+  "2. Yhdessä paremmin, sana kerrallaan",
   "Kuinka tehdä hyvä joulu?",
   "Miten saa seurustelukumppanin?",
 ];
@@ -9,7 +13,7 @@ var content = [
 
 // END CONTENT
 
-document.addEventListener('contextmenu', event => event.preventDefault());
+// document.addEventListener('contextmenu', event => event.preventDefault());
 
 var score_left = 0;
 var score_right = 0;
@@ -243,7 +247,7 @@ function prevContent() {
 
         //  Move content 2 container into middle of screen.
         $('#content_2').animate({
-          "left": "0",
+          "left": "15%",
         },CONTENT_ANIM_SPEED,function() {
           //  Re-enable animations.
           anim_complete = true;
@@ -278,7 +282,7 @@ function prevContent() {
       
         //  Move content 1 container into middle of screen.
         $('#content_1').animate({
-          "left": "0",
+          "left": "15%",
         },CONTENT_ANIM_SPEED,function() {
           //  Re-enable animations.
           anim_complete = true;
@@ -289,11 +293,11 @@ function prevContent() {
     else {
       anim_complete = false;
       $('#content_1').animate({
-        "left": "15%",
-      },CONTENT_ANIM_SPEED/2,function() {
+        "left": "25%",
+      },CONTENT_ANIM_SPEED/4,function() {
         $('#content_1').animate({
-          "left": "0",
-        },CONTENT_ANIM_SPEED/2,function() {
+          "left": "15%",
+        },CONTENT_ANIM_SPEED/4,function() {
           anim_complete = true;
         });
       });
@@ -337,7 +341,7 @@ function nextContent() {
 
         //  Move content 2 container into middle of screen.
         $('#content_2').animate({
-          "left": "0",
+          "left": "15%",
         },CONTENT_ANIM_SPEED,function() {
           //  Re-enable animations
           anim_complete = true;
@@ -372,7 +376,7 @@ function nextContent() {
 
         //  Move content 1 container into middle of screen.
         $('#content_1').animate({
-          "left": "0",
+          "left": "15%",
         },CONTENT_ANIM_SPEED,function() {
           //  Re-enable animations.
           anim_complete = true;
@@ -384,11 +388,11 @@ function nextContent() {
     else {
       anim_complete = false;
       $('#content_1').animate({
-        "left": "-15%",
-      },CONTENT_ANIM_SPEED/2,function() {
+        "left": "5%",
+      },CONTENT_ANIM_SPEED/4,function() {
         $('#content_1').animate({
-          "left": "0",
-        },CONTENT_ANIM_SPEED/2,function() {
+          "left": "15%",
+        },CONTENT_ANIM_SPEED/4,function() {
           anim_complete = true;
         });
       });

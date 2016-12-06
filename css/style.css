@@ -1,4 +1,5 @@
 html {
+  overflow: hidden;
   color: black;
   background-color: #D0B080;
   font-family: 'Fredoka One', cursive;
@@ -136,16 +137,22 @@ footer.page-footer {
   background-color: #FFE0C0 !important;
   color: #442010;
   min-width: 70%;
-  position: relative;
+  width: 70%;
+  position: absolute;
+  left: 15%;
+  top: 255px;
+  display: inline;
 }
 
 .card-panel img {
-  max-height: 300px;
+  max-height: 58vh;
+  height: 58vh;
+  line-height: 58vh;
 }
-
+/*
 #content_2 {
   transform: translateY(-50%);
-}
+}*/
 
 #timeout {
   z-index: 10;
