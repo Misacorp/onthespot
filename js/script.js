@@ -2,7 +2,7 @@
 //  This sets the stage for the show. Would be nice to have a UI that helps build it on the page itself, right?
 
 var content = [
-  "Jarkan hieno kilpailu",
+  "<div style=\"min-height: 10vh\"></div>",
   "1. Uusi supersankari",
   "<img class=\"valign center responsive-img\" src=\"img/superhero1.jpg\">",
   "<img class=\"valign center responsive-img\" src=\"img/superhero2.jpg\">",
@@ -225,6 +225,16 @@ $(document).keydown(function(e) {
       toggleTimeout();
       resetTimer();
     }
+  }
+
+  //  Decrease font size from comma (,)
+  if(e.which == 186) {
+    decreaseFontSize();
+  }
+
+  //  Increase font size from period (.)
+  if(e.which == 219) {
+    increaseFontSize();
   }
 
 });
@@ -464,4 +474,22 @@ function updateAnswer() {
   if(content_number == 7 || content_number == 8) {
     content[8] = "<span class=\"red-text\">" + $('#kirjoitus').val() + "</span>";
   }
+}
+
+function getFontSize() {
+  var size = $('.card-panel').css('font-size');
+  size = size.replace(/[^\d\.]/g, '');
+  return parseInt(size);
+}
+
+function decreaseFontSize() {
+  $('.card-panel').css({
+    "font-size": getFontSize() - 10,
+  });
+}
+
+function increaseFontSize() {
+  $('.card-panel').css({
+    "font-size": getFontSize() + 10,
+  });
 }
